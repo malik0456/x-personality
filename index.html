@@ -7,414 +7,244 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #07070f;
-    --s1: #0e0e1a;
-    --s2: #13131f;
-    --border: #1d1d2e;
-    --border2: #262638;
-    --accent: #6d28d9;
-    --accent2: #a78bfa;
-    --cyan: #22d3ee;
-    --text: #e2e8f0;
-    --muted: #64748b;
-    --muted2: #94a3b8;
-    --red: #f87171;
+    --bg:#07070f; --s1:#0e0e1a; --s2:#13131f;
+    --border:#1d1d2e; --border2:#262638;
+    --accent:#6d28d9; --accent2:#a78bfa; --cyan:#22d3ee;
+    --text:#e2e8f0; --muted:#64748b; --muted2:#94a3b8; --red:#f87171;
   }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Tajawal', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-  body::after {
-    content:'';
-    position:fixed; inset:0;
-    background:
-      radial-gradient(ellipse 60% 40% at 80% 10%, rgba(109,40,217,.08) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 40% at 10% 80%, rgba(34,211,238,.06) 0%, transparent 60%);
-    pointer-events:none; z-index:0;
-  }
-  .wrap { max-width:680px; margin:0 auto; padding:40px 18px 80px; position:relative; z-index:1; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'Tajawal',sans-serif;min-height:100vh;overflow-x:hidden;}
+  body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 60% 40% at 80% 10%,rgba(109,40,217,.08) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 10% 80%,rgba(34,211,238,.06) 0%,transparent 60%);pointer-events:none;z-index:0;}
+  .wrap{max-width:680px;margin:0 auto;padding:40px 18px 80px;position:relative;z-index:1;}
 
-  .hd { text-align:center; margin-bottom:40px; animation: fd .7s ease; }
-  .badge {
-    display:inline-flex; align-items:center; gap:7px;
-    background:var(--s1); border:1px solid var(--border2);
-    border-radius:50px; padding:6px 18px; margin-bottom:22px;
-    font-size:11px; letter-spacing:2.5px; color:var(--accent2);
-    font-family:'Space Mono',monospace;
-  }
-  .dot { width:5px;height:5px;background:var(--accent2);border-radius:50%;animation:pulse 2s infinite; }
-  h1 { font-size:clamp(30px,6vw,50px); font-weight:900; line-height:1.15; margin-bottom:10px; }
-  h1 em { font-style:normal; background:linear-gradient(120deg,#a78bfa,#22d3ee); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-  .sub { color:var(--muted); font-size:16px; font-weight:300; }
+  /* Header */
+  .hd{text-align:center;margin-bottom:44px;animation:fd .7s ease;}
+  .badge{display:inline-flex;align-items:center;gap:7px;background:var(--s1);border:1px solid var(--border2);border-radius:50px;padding:6px 18px;margin-bottom:22px;font-size:11px;letter-spacing:2.5px;color:var(--accent2);font-family:'Space Mono',monospace;}
+  .dot{width:5px;height:5px;background:var(--accent2);border-radius:50%;animation:pulse 2s infinite;}
+  h1{font-size:clamp(30px,6vw,50px);font-weight:900;line-height:1.15;margin-bottom:10px;}
+  h1 em{font-style:normal;background:linear-gradient(120deg,#a78bfa,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .sub{color:var(--muted);font-size:16px;font-weight:300;}
 
-  .steps-bar { display:flex; align-items:center; justify-content:center; gap:0; margin-bottom:30px; }
-  .step-dot {
-    width:30px;height:30px;border-radius:50%;
-    background:var(--s1);border:2px solid var(--border2);
-    display:flex;align-items:center;justify-content:center;
-    font-size:12px;font-weight:700;color:var(--muted);
-    transition:all .4s;z-index:1;font-family:'Space Mono',monospace;
-  }
-  .step-dot.done { background:var(--accent);border-color:var(--accent);color:#fff; }
-  .step-dot.active { background:var(--s2);border-color:var(--accent2);color:var(--accent2);box-shadow:0 0 16px rgba(167,139,250,.3); }
-  .step-line { flex:1;height:2px;background:var(--border);max-width:60px;transition:background .4s; }
-  .step-line.done { background:var(--accent); }
+  /* Input card */
+  .card{background:var(--s1);border:1px solid var(--border);border-radius:22px;padding:32px 28px;}
+  .u-label{font-size:13px;color:var(--accent2);font-weight:600;letter-spacing:.5px;margin-bottom:14px;display:block;}
+  .u-field{display:flex;align-items:center;gap:10px;background:var(--s2);border:2px solid var(--border);border-radius:14px;padding:16px 20px;transition:border-color .3s;margin-bottom:20px;}
+  .u-field:focus-within{border-color:var(--accent2);}
+  .at{font-family:'Space Mono',monospace;font-size:20px;font-weight:700;color:var(--accent2);}
+  .u-input{background:transparent;border:none;outline:none;color:var(--text);font-family:'Space Mono',monospace;font-size:20px;flex:1;direction:ltr;}
+  .u-input::placeholder{color:var(--muted);}
 
-  .card { background:var(--s1);border:1px solid var(--border);border-radius:22px;padding:28px 24px; }
+  .btn{width:100%;padding:18px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--accent),#7c3aed);color:#fff;font-family:'Tajawal',sans-serif;font-size:18px;font-weight:700;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;}
+  .btn::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#7c3aed,var(--cyan));opacity:0;transition:opacity .3s;}
+  .btn:hover::after{opacity:1;}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(109,40,217,.4);}
+  .btn:disabled{opacity:.45;cursor:not-allowed;transform:none;}
+  .btn-inner{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:8px;}
 
-  .u-label { font-size:13px;color:var(--accent2);font-weight:600;letter-spacing:.5px;margin-bottom:12px;display:block; }
-  .u-field {
-    display:flex;align-items:center;gap:10px;
-    background:var(--s2);border:2px solid var(--border);
-    border-radius:14px;padding:14px 18px;transition:border-color .3s;
-  }
-  .u-field:focus-within { border-color:var(--accent2); }
-  .at { font-family:'Space Mono',monospace;font-size:18px;font-weight:700;color:var(--accent2); }
-  .u-input {
-    background:transparent;border:none;outline:none;
-    color:var(--text);font-family:'Space Mono',monospace;
-    font-size:18px;flex:1;direction:ltr;
-  }
-  .u-input::placeholder { color:var(--muted); }
-  .u-hint { font-size:13px;color:var(--muted);margin-top:10px;text-align:center; }
+  .err{display:none;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.25);border-radius:12px;padding:13px 18px;color:var(--red);font-size:14px;text-align:center;margin-top:14px;}
+  .err.on{display:block;}
 
-  .prog-wrap { margin-bottom:20px; }
-  .prog-top { display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px; }
-  .prog-bar { height:3px;background:var(--border);border-radius:2px;overflow:hidden; }
-  .prog-fill { height:100%;background:linear-gradient(90deg,var(--accent),var(--cyan));border-radius:2px;transition:width .4s; }
+  /* Loading */
+  .loading{display:none;text-align:center;padding:60px 20px;}
+  .loading.on{display:block;}
+  .ring{width:80px;height:80px;border-radius:50%;border:3px solid var(--border2);border-top-color:var(--accent2);animation:spin 1s linear infinite;margin:0 auto 24px;}
+  .loading-label{color:var(--accent2);font-size:16px;font-weight:600;margin-bottom:18px;}
+  .loading-steps{display:flex;flex-direction:column;gap:10px;align-items:center;}
+  .lstep{font-size:14px;color:var(--muted);transition:all .4s;}
+  .lstep.on{color:var(--accent2);font-weight:600;}
 
-  .question-block { margin-bottom:22px; }
-  .q-label { font-size:14px;font-weight:600;color:var(--muted2);margin-bottom:10px;display:flex;align-items:center;gap:8px; }
-  .q-num {
-    width:22px;height:22px;border-radius:6px;
-    background:rgba(109,40,217,.2);border:1px solid rgba(167,139,250,.3);
-    display:inline-flex;align-items:center;justify-content:center;
-    font-size:11px;font-weight:700;color:var(--accent2);
-    font-family:'Space Mono',monospace;flex-shrink:0;
-  }
-  .pills { display:flex;flex-wrap:wrap;gap:8px; }
-  .pill {
-    padding:8px 16px;border-radius:50px;
-    background:var(--s2);border:1px solid var(--border2);
-    color:var(--muted2);font-size:14px;font-weight:500;
-    cursor:pointer;transition:all .25s;user-select:none;
-  }
-  .pill:hover { border-color:var(--accent2);color:var(--accent2); }
-  .pill.sel { background:rgba(109,40,217,.2);border-color:var(--accent2);color:var(--accent2); }
-  .pill.multi.sel { background:rgba(34,211,238,.1);border-color:var(--cyan);color:var(--cyan); }
+  /* Results */
+  .results{display:none;}
+  .results.on{display:block;animation:fu .6s ease;}
 
-  .q-input {
-    width:100%;background:var(--s2);border:1px solid var(--border2);
-    border-radius:12px;padding:12px 16px;color:var(--text);
-    font-family:'Tajawal',sans-serif;font-size:15px;outline:none;transition:border-color .3s;
-  }
-  .q-input:focus { border-color:var(--accent2); }
-  .q-input::placeholder { color:var(--muted); }
+  .r-header{background:linear-gradient(135deg,var(--s1),var(--s2));border:1px solid var(--border2);border-radius:22px;padding:26px;margin-bottom:14px;position:relative;overflow:hidden;}
+  .r-header::before{content:'';position:absolute;top:-40px;left:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(109,40,217,.12),transparent 70%);}
+  .r-top{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+  .avatar{width:64px;height:64px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--accent),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900;color:#fff;}
+  .r-name{font-size:21px;font-weight:800;margin-bottom:3px;}
+  .r-handle{font-family:'Space Mono',monospace;font-size:12px;color:var(--accent2);margin-bottom:4px;}
+  .r-bio{font-size:13px;color:var(--muted);}
+  .ptype{display:inline-flex;align-items:center;gap:6px;background:rgba(109,40,217,.15);border:1px solid rgba(167,139,250,.25);border-radius:50px;padding:5px 14px;font-size:13px;font-weight:600;color:var(--accent2);margin-bottom:12px;}
+  .r-summary{font-size:15px;line-height:1.9;color:var(--muted2);}
 
-  .btn-primary {
-    width:100%;padding:16px;border:none;border-radius:14px;
-    background:linear-gradient(135deg,var(--accent),#7c3aed);
-    color:#fff;font-family:'Tajawal',sans-serif;
-    font-size:17px;font-weight:700;cursor:pointer;
-    transition:all .3s;position:relative;overflow:hidden;margin-top:8px;
-  }
-  .btn-primary::after { content:'';position:absolute;inset:0;background:linear-gradient(135deg,#7c3aed,var(--cyan));opacity:0;transition:opacity .3s; }
-  .btn-primary:hover::after { opacity:1; }
-  .btn-primary:hover { transform:translateY(-2px);box-shadow:0 12px 36px rgba(109,40,217,.4); }
-  .btn-primary:disabled { opacity:.45;cursor:not-allowed;transform:none; }
-  .btn-inner { position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:8px; }
+  /* Stats row */
+  .stats-row{display:flex;gap:10px;margin-bottom:14px;}
+  .stat{flex:1;background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:14px;text-align:center;}
+  .stat-val{font-size:18px;font-weight:800;font-family:'Space Mono',monospace;color:var(--accent2);}
+  .stat-lbl{font-size:11px;color:var(--muted);margin-top:4px;}
 
-  .btn-ghost {
-    width:100%;padding:13px;border:1px solid var(--border);
-    border-radius:12px;background:transparent;color:var(--muted);
-    font-family:'Tajawal',sans-serif;font-size:15px;cursor:pointer;transition:all .3s;margin-top:10px;
-  }
-  .btn-ghost:hover { color:var(--text);border-color:var(--muted); }
+  .scores{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+  .sc{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:16px 12px;text-align:center;}
+  .sc-lbl{font-size:11px;color:var(--muted);margin-bottom:6px;display:block;}
+  .sc-val{font-size:26px;font-weight:800;font-family:'Space Mono',monospace;background:linear-gradient(135deg,#a78bfa,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .sc-bar{height:3px;background:var(--border);border-radius:2px;margin-top:8px;overflow:hidden;}
+  .sc-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--cyan));border-radius:2px;transition:width 1.4s cubic-bezier(.4,0,.2,1);width:0;}
 
-  .err {
-    display:none;background:rgba(248,113,113,.08);
-    border:1px solid rgba(248,113,113,.25);
-    border-radius:12px;padding:13px 18px;
-    color:var(--red);font-size:14px;text-align:center;margin-top:12px;
-  }
-  .err.on { display:block; }
+  .acard{background:var(--s1);border:1px solid var(--border);border-radius:18px;padding:22px;margin-bottom:12px;}
+  .acard-title{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:700;margin-bottom:13px;}
+  .aicon{width:30px;height:30px;border-radius:8px;background:rgba(109,40,217,.15);display:flex;align-items:center;justify-content:center;font-size:15px;}
+  .atext{font-size:15px;line-height:1.9;color:var(--muted2);}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;}
+  .tag{background:var(--s2);border:1px solid var(--border2);border-radius:50px;padding:4px 13px;font-size:13px;color:var(--accent2);font-weight:500;}
 
-  .loading { display:none;text-align:center;padding:50px 20px; }
-  .loading.on { display:block; }
-  .ring { width:72px;height:72px;border-radius:50%;border:3px solid var(--border2);border-top-color:var(--accent2);animation:spin 1s linear infinite;margin:0 auto 20px; }
-  .loading-label { color:var(--accent2);font-size:15px;font-weight:600;margin-bottom:16px; }
-  .loading-steps { display:flex;flex-direction:column;gap:8px;align-items:center; }
-  .lstep { font-size:13px;color:var(--muted);transition:all .4s; }
-  .lstep.on { color:var(--accent2);font-weight:600; }
+  .verdict{background:linear-gradient(135deg,rgba(109,40,217,.08),rgba(34,211,238,.08));border:1px solid rgba(109,40,217,.25);border-radius:20px;padding:24px;margin-bottom:12px;text-align:center;}
+  .v-emoji{font-size:44px;display:block;margin-bottom:10px;}
+  .v-title{font-size:20px;font-weight:800;margin-bottom:10px;background:linear-gradient(135deg,#a78bfa,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .v-text{font-size:15px;line-height:1.9;color:var(--muted2);}
 
-  .results { display:none; }
-  .results.on { display:block;animation:fu .6s ease; }
+  .share-btn{width:100%;padding:16px;background:var(--s1);border:1px solid var(--border2);border-radius:14px;color:var(--text);font-family:'Tajawal',sans-serif;font-size:16px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .3s;margin-top:8px;}
+  .share-btn:hover{border-color:var(--accent2);color:var(--accent2);background:var(--s2);}
+  .reset-btn{width:100%;padding:13px;border:1px solid var(--border);border-radius:12px;background:transparent;color:var(--muted);font-family:'Tajawal',sans-serif;font-size:15px;cursor:pointer;transition:all .3s;margin-top:10px;}
+  .reset-btn:hover{color:var(--text);border-color:var(--muted);}
 
-  .r-header { background:linear-gradient(135deg,var(--s1),var(--s2));border:1px solid var(--border2);border-radius:22px;padding:26px;margin-bottom:14px;position:relative;overflow:hidden; }
-  .r-header::before { content:'';position:absolute;top:-40px;left:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(109,40,217,.12),transparent 70%); }
-  .r-top { display:flex;align-items:center;gap:14px;margin-bottom:14px; }
-  .avatar { width:60px;height:60px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--accent),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;color:#fff; }
-  .r-name { font-size:20px;font-weight:800;margin-bottom:3px; }
-  .r-handle { font-family:'Space Mono',monospace;font-size:12px;color:var(--accent2); }
-  .ptype { display:inline-flex;align-items:center;gap:6px;background:rgba(109,40,217,.15);border:1px solid rgba(167,139,250,.25);border-radius:50px;padding:5px 14px;font-size:13px;font-weight:600;color:var(--accent2);margin-bottom:12px; }
-  .r-summary { font-size:15px;line-height:1.9;color:var(--muted2); }
-
-  .scores { display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px; }
-  .sc { background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:16px 12px;text-align:center; }
-  .sc-lbl { font-size:11px;color:var(--muted);margin-bottom:6px;display:block; }
-  .sc-val { font-size:26px;font-weight:800;font-family:'Space Mono',monospace;background:linear-gradient(135deg,#a78bfa,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
-  .sc-bar { height:3px;background:var(--border);border-radius:2px;margin-top:8px;overflow:hidden; }
-  .sc-fill { height:100%;background:linear-gradient(90deg,var(--accent),var(--cyan));border-radius:2px;transition:width 1.4s cubic-bezier(.4,0,.2,1);width:0; }
-
-  .acard { background:var(--s1);border:1px solid var(--border);border-radius:18px;padding:22px;margin-bottom:12px; }
-  .acard-title { display:flex;align-items:center;gap:9px;font-size:15px;font-weight:700;margin-bottom:13px; }
-  .aicon { width:30px;height:30px;border-radius:8px;background:rgba(109,40,217,.15);display:flex;align-items:center;justify-content:center;font-size:15px; }
-  .atext { font-size:15px;line-height:1.9;color:var(--muted2); }
-  .tags { display:flex;flex-wrap:wrap;gap:7px;margin-top:10px; }
-  .tag { background:var(--s2);border:1px solid var(--border2);border-radius:50px;padding:4px 13px;font-size:13px;color:var(--accent2);font-weight:500; }
-
-  .verdict { background:linear-gradient(135deg,rgba(109,40,217,.08),rgba(34,211,238,.08));border:1px solid rgba(109,40,217,.25);border-radius:20px;padding:24px;margin-bottom:12px;text-align:center; }
-  .v-emoji { font-size:40px;display:block;margin-bottom:10px; }
-  .v-title { font-size:19px;font-weight:800;margin-bottom:10px;background:linear-gradient(135deg,#a78bfa,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
-  .v-text { font-size:15px;line-height:1.9;color:var(--muted2); }
-
-  .share-btn { width:100%;padding:15px;background:var(--s1);border:1px solid var(--border2);border-radius:14px;color:var(--text);font-family:'Tajawal',sans-serif;font-size:16px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .3s;margin-top:6px; }
-  .share-btn:hover { border-color:var(--accent2);color:var(--accent2);background:var(--s2); }
-
-  @keyframes fd { from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)} }
-  @keyframes fu { from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)} }
-  @keyframes spin { to{transform:rotate(360deg)} }
-  @keyframes pulse { 0%,100%{opacity:1}50%{opacity:.3} }
-  @media(max-width:480px){ .scores{grid-template-columns:repeat(2,1fr)} }
+  @keyframes fd{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fu{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  @media(max-width:480px){.scores{grid-template-columns:repeat(2,1fr)}.stats-row{flex-wrap:wrap}}
 </style>
 </head>
 <body>
 <div class="wrap">
+
   <div class="hd">
     <div class="badge"><div class="dot"></div>X PERSONALITY AI</div>
     <h1>محلل <em>شخصية X</em></h1>
-    <p class="sub">أجب على 4 أسئلة سريعة واحصل على تحليل كامل</p>
+    <p class="sub">اكتب أي username واحصل على تحليل كامل بالذكاء الاصطناعي</p>
   </div>
 
-  <div class="steps-bar" id="stepsBar">
-    <div class="step-dot active" id="sd0">1</div>
-    <div class="step-line" id="sl0"></div>
-    <div class="step-dot" id="sd1">2</div>
-    <div class="step-line" id="sl1"></div>
-    <div class="step-dot" id="sd2">3</div>
-    <div class="step-line" id="sl2"></div>
-    <div class="step-dot" id="sd3">✓</div>
-  </div>
-
-  <!-- Step 0 -->
-  <div id="step0" class="card">
-    <span class="u-label">🔍 اسم الحساب على X</span>
-    <div class="u-field">
-      <span class="at">@</span>
-      <input class="u-input" id="unameInput" placeholder="username" dir="ltr" autocomplete="off">
-    </div>
-    <p class="u-hint">اكتب الـ username بدون @</p>
-    <div class="err" id="err0">⚠️ اكتب اسم الحساب أولاً</div>
-    <button class="btn-primary" onclick="goStep(1)"><span class="btn-inner">التالي &nbsp;←</span></button>
-  </div>
-
-  <!-- Step 1 -->
-  <div id="step1" class="card" style="display:none">
-    <div class="prog-wrap">
-      <div class="prog-top"><span>السؤال 1 و 2 من 4</span><span>50%</span></div>
-      <div class="prog-bar"><div class="prog-fill" style="width:50%"></div></div>
-    </div>
-    <div class="question-block">
-      <div class="q-label"><span class="q-num">1</span> إيش نوع محتواه؟ (اختر واحد أو أكثر)</div>
-      <div class="pills" id="q1">
-        <span class="pill multi" data-v="أسهم واستثمار">📈 أسهم واستثمار</span>
-        <span class="pill multi" data-v="كريبتو">₿ كريبتو</span>
-        <span class="pill multi" data-v="تقنية وتكنولوجيا">💻 تقنية</span>
-        <span class="pill multi" data-v="رياضة">⚽ رياضة</span>
-        <span class="pill multi" data-v="سياسة">🏛️ سياسة</span>
-        <span class="pill multi" data-v="ترفيه وفكاهة">😂 ترفيه</span>
-        <span class="pill multi" data-v="دين وثقافة">📖 دين وثقافة</span>
-        <span class="pill multi" data-v="أعمال وريادة">🚀 أعمال</span>
-        <span class="pill multi" data-v="رأي وتحليل">🧠 رأي وتحليل</span>
-        <span class="pill multi" data-v="يومي وشخصي">🗓️ يومي</span>
+  <!-- Input -->
+  <div id="inputSection">
+    <div class="card">
+      <span class="u-label">🔍 اكتب الـ username</span>
+      <div class="u-field">
+        <span class="at">@</span>
+        <input class="u-input" id="unameInput" placeholder="username" dir="ltr" autocomplete="off"
+          onkeydown="if(event.key==='Enter') analyze()">
       </div>
+      <button class="btn" id="analyzeBtn" onclick="analyze()">
+        <span class="btn-inner">⚡ &nbsp;حلّل الشخصية الآن</span>
+      </button>
+      <div class="err" id="errBox">⚠️ اكتب اسم الحساب أولاً</div>
     </div>
-    <div class="question-block">
-      <div class="q-label"><span class="q-num">2</span> كيف أسلوبه في التغريد؟</div>
-      <div class="pills" id="q2">
-        <span class="pill" data-v="واثق ومباشر">🎯 واثق ومباشر</span>
-        <span class="pill" data-v="هادئ وأكاديمي">📚 هادئ وأكاديمي</span>
-        <span class="pill" data-v="مثير للجدل">🔥 مثير للجدل</span>
-        <span class="pill" data-v="فكاهي وخفيف">😄 فكاهي</span>
-        <span class="pill" data-v="عاطفي ومشاعر">💙 عاطفي</span>
-        <span class="pill" data-v="متشكك وناقد">🤔 ناقد</span>
-      </div>
-    </div>
-    <div class="err" id="err1">⚠️ اختر إجابة لكل سؤال</div>
-    <button class="btn-primary" onclick="goStep(2)"><span class="btn-inner">التالي &nbsp;←</span></button>
-    <button class="btn-ghost" onclick="goStep(0)">→ رجوع</button>
-  </div>
-
-  <!-- Step 2 -->
-  <div id="step2" class="card" style="display:none">
-    <div class="prog-wrap">
-      <div class="prog-top"><span>السؤال 3 و 4 من 4</span><span>100%</span></div>
-      <div class="prog-bar"><div class="prog-fill" style="width:100%"></div></div>
-    </div>
-    <div class="question-block">
-      <div class="q-label"><span class="q-num">3</span> كيف تفاعله مع الناس؟</div>
-      <div class="pills" id="q3">
-        <span class="pill" data-v="يرد على الجميع ومتفاعل جداً">💬 يرد على الجميع</span>
-        <span class="pill" data-v="يختار من يرد عليه">🎯 انتقائي في الرد</span>
-        <span class="pill" data-v="نادراً ما يرد">🔇 نادراً يرد</span>
-        <span class="pill" data-v="يدخل في نقاشات ومعارك">⚔️ يدخل نقاشات</span>
-      </div>
-    </div>
-    <div class="question-block">
-      <div class="q-label"><span class="q-num">4</span> أي شيء تبي تضيفه؟ <span style="color:var(--muted);font-size:12px;">(اختياري)</span></div>
-      <input class="q-input" id="q4" placeholder="مثال: عنده 50k متابع، سعودي، معروف في مجاله...">
-    </div>
-    <div class="err" id="err2">⚠️ اختر كيف تفاعله أولاً</div>
-    <button class="btn-primary" id="analyzeBtn" onclick="analyze()"><span class="btn-inner">⚡ &nbsp;حلّل الشخصية الآن</span></button>
-    <button class="btn-ghost" onclick="goStep(1)">→ رجوع</button>
   </div>
 
   <!-- Loading -->
   <div class="loading" id="loading">
     <div class="ring"></div>
-    <div class="loading-label">جاري بناء التقرير...</div>
+    <div class="loading-label">جاري تحليل الحساب...</div>
     <div class="loading-steps">
-      <div class="lstep on" id="ls0">🧠 تحليل الأنماط السلوكية</div>
-      <div class="lstep" id="ls1">🎯 تحديد نوع الشخصية</div>
-      <div class="lstep" id="ls2">📊 حساب مؤشرات التأثير</div>
-      <div class="lstep" id="ls3">✍️ كتابة التقرير</div>
+      <div class="lstep on" id="ls0">🔍 جلب بيانات الحساب من X</div>
+      <div class="lstep" id="ls1">📖 قراءة آخر التغريدات</div>
+      <div class="lstep" id="ls2">🧠 تحليل الشخصية بالذكاء الاصطناعي</div>
+      <div class="lstep" id="ls3">✍️ إعداد التقرير النهائي</div>
     </div>
   </div>
 
   <!-- Results -->
   <div class="results" id="results">
     <div id="resultsHTML"></div>
-    <button class="share-btn" onclick="share()">𝕏 &nbsp; شارك نتيجتك على X</button>
-    <button class="btn-ghost" onclick="reset()">← حلّل حساباً آخر</button>
+    <button class="share-btn" onclick="share()">𝕏 &nbsp;شارك نتيجتك على X</button>
+    <button class="reset-btn" onclick="reset()">← حلّل حساباً آخر</button>
   </div>
+
 </div>
-
 <script>
-document.querySelectorAll('#q2 .pill, #q3 .pill').forEach(p => {
-  p.addEventListener('click', () => {
-    p.closest('.pills').querySelectorAll('.pill').forEach(x => x.classList.remove('sel'));
-    p.classList.add('sel');
-  });
-});
-document.querySelectorAll('#q1 .pill').forEach(p => {
-  p.addEventListener('click', () => p.classList.toggle('sel'));
-});
-
-function getSingle(id){ const s=document.querySelector('#'+id+' .pill.sel'); return s?s.dataset.v:null; }
-function getMulti(id){ return [...document.querySelectorAll('#'+id+' .pill.sel')].map(p=>p.dataset.v); }
-function showErr(id,msg){ const e=document.getElementById(id); if(msg)e.textContent=msg; e.classList.add('on'); }
-function hideErr(id){ document.getElementById(id).classList.remove('on'); }
-
-function updateBar(n){
-  [0,1,2,3].forEach(i=>{ const sd=document.getElementById('sd'+i); if(!sd)return; sd.className='step-dot'+(i<n?' done':i===n?' active':''); });
-  [0,1,2].forEach(i=>{ const sl=document.getElementById('sl'+i); if(sl)sl.className='step-line'+(i<n?' done':''); });
-}
-
-function goStep(n){
-  if(n===1){ if(!document.getElementById('unameInput').value.trim()){showErr('err0');return;} hideErr('err0'); }
-  if(n===2){ if(!getMulti('q1').length||!getSingle('q2')){showErr('err1');return;} hideErr('err1'); }
-  [0,1,2].forEach(i=>document.getElementById('step'+i).style.display='none');
-  document.getElementById('step'+n).style.display='block';
-  updateBar(n);
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
 let lsT;
 function animateLoading(){
   let i=0;
   document.querySelectorAll('.lstep').forEach(x=>x.classList.remove('on'));
   document.getElementById('ls0').classList.add('on');
-  lsT=setInterval(()=>{ i++; if(i<4){ document.querySelectorAll('.lstep').forEach(x=>x.classList.remove('on')); document.getElementById('ls'+i).classList.add('on'); } else clearInterval(lsT); },1100);
+  lsT=setInterval(()=>{i++;if(i<4){document.querySelectorAll('.lstep').forEach(x=>x.classList.remove('on'));document.getElementById('ls'+i).classList.add('on');}else clearInterval(lsT);},1200);
 }
 
-async function analyze(){
-  const q3=getSingle('q3');
-  if(!q3){showErr('err2');return;}
-  hideErr('err2');
-  const username=document.getElementById('unameInput').value.trim();
-  const topics=getMulti('q1').join('، ');
-  const style=getSingle('q2');
-  const extra=document.getElementById('q4').value.trim();
-  const desc=`حساب ${username?'@'+username:''}:\n- المحتوى: ${topics}\n- الأسلوب: ${style}\n- التفاعل: ${q3}\n${extra?'- معلومات إضافية: '+extra:''}`;
+function fmt(n){if(!n)return'0';if(n>=1000000)return(n/1000000).toFixed(1)+'M';if(n>=1000)return(n/1000).toFixed(1)+'K';return n.toString();}
 
-  document.getElementById('step2').style.display='none';
-  document.getElementById('stepsBar').style.display='none';
+async function analyze(){
+  const username=document.getElementById('unameInput').value.trim().replace('@','');
+  const errBox=document.getElementById('errBox');
+  errBox.classList.remove('on');
+  if(!username){errBox.classList.add('on');return;}
+
+  document.getElementById('inputSection').style.display='none';
   document.getElementById('loading').classList.add('on');
   animateLoading();
 
-  const prompt=`أنت محلل نفسي متخصص في تحليل شخصيات مستخدمي X. حلل هذا الحساب بدقة وصراحة.\n\nالمعلومات:\n${desc}\n\nأعطني JSON فقط بهذا الهيكل (بدون أي نص خارج الـ JSON):\n{\n  "personality_type": "وصف نوع الشخصية في 4-5 كلمات",\n  "avatar_letter": "حرف عربي يمثله",\n  "summary": "تحليل شخصيته في 3 جمل دقيقة وصريحة",\n  "scores": {"التأثير": 80, "المصداقية": 65, "الانتظام": 75},\n  "strengths": "نقاط قوته الحقيقية في جملتين",\n  "weakness": "نقاط ضعفه بصراحة في جملتين",\n  "audience": "من يتابعه ولماذا في جملتين",\n  "content_style": "أسلوبه في المحتوى في جملتين",\n  "keywords": ["وسم1","وسم2","وسم3","وسم4","وسم5"],\n  "verdict_emoji": "إيموجي",\n  "verdict_title": "حكم نهائي في 4 كلمات",\n  "verdict_text": "تقييم ختامي جريء وصادق في جملتين"\n}`;
-
-  try {
+  try{
     const res=await fetch('/api/analyze',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({prompt})
+      body:JSON.stringify({username})
     });
     const data=await res.json();
-    const raw=data.content?.[0]?.text||'';
-    const j=JSON.parse(raw.replace(/```json|```/g,'').trim());
+    if(data.error) throw new Error(data.error);
     clearInterval(lsT);
-    showResults(j,username);
-  } catch(e){
+    showResults(data.analysis, data.profile);
+  }catch(e){
     clearInterval(lsT);
     document.getElementById('loading').classList.remove('on');
-    document.getElementById('step2').style.display='block';
-    document.getElementById('stepsBar').style.display='flex';
-    showErr('err2','⚠️ حدث خطأ، حاول مجدداً');
+    document.getElementById('inputSection').style.display='block';
+    errBox.textContent='⚠️ '+(e.message||'حدث خطأ، حاول مجدداً');
+    errBox.classList.add('on');
   }
 }
 
-function showResults(d,username){
+function showResults(d, p){
   document.getElementById('loading').classList.remove('on');
   document.getElementById('results').classList.add('on');
-  const handle=username?'@'+username:'@حساب';
-  const scHTML=Object.entries(d.scores||{}).map(([k,v])=>`<div class="sc"><span class="sc-lbl">${k}</span><div class="sc-val">${v}%</div><div class="sc-bar"><div class="sc-fill" data-w="${v}"></div></div></div>`).join('');
+
+  const scHTML=Object.entries(d.scores||{}).map(([k,v])=>
+    `<div class="sc"><span class="sc-lbl">${k}</span><div class="sc-val">${v}%</div><div class="sc-bar"><div class="sc-fill" data-w="${v}"></div></div></div>`).join('');
   const tagsHTML=(d.keywords||[]).map(t=>`<span class="tag">${t}</span>`).join('');
+
   document.getElementById('resultsHTML').innerHTML=`
     <div class="r-header">
-      <div class="r-top"><div class="avatar">${d.avatar_letter||'؟'}</div><div><div class="r-name">${handle}</div><div class="r-handle">تحليل شخصية · AI</div></div></div>
+      <div class="r-top">
+        <div class="avatar">${d.avatar_letter||'؟'}</div>
+        <div>
+          <div class="r-name">${p.name||'@'+p.username}</div>
+          <div class="r-handle">@${p.username}</div>
+          ${p.bio?`<div class="r-bio">${p.bio}</div>`:''}
+        </div>
+      </div>
       <div class="ptype">✦ ${d.personality_type||''}</div>
       <p class="r-summary">${d.summary||''}</p>
     </div>
+
+    <div class="stats-row">
+      <div class="stat"><div class="stat-val">${fmt(p.followers)}</div><div class="stat-lbl">متابع</div></div>
+      <div class="stat"><div class="stat-val">${fmt(p.following)}</div><div class="stat-lbl">يتابع</div></div>
+      <div class="stat"><div class="stat-val">${fmt(p.tweets_count)}</div><div class="stat-lbl">تغريدة</div></div>
+    </div>
+
     <div class="scores">${scHTML}</div>
     <div class="acard"><div class="acard-title"><div class="aicon">💪</div>نقاط القوة</div><p class="atext">${d.strengths||''}</p></div>
     <div class="acard"><div class="acard-title"><div class="aicon">⚠️</div>نقاط الضعف</div><p class="atext">${d.weakness||''}</p></div>
     <div class="acard"><div class="acard-title"><div class="aicon">👥</div>جمهوره</div><p class="atext">${d.audience||''}</p><div class="tags">${tagsHTML}</div></div>
     <div class="acard"><div class="acard-title"><div class="aicon">✍️</div>أسلوب المحتوى</div><p class="atext">${d.content_style||''}</p></div>
-    <div class="verdict"><span class="v-emoji">${d.verdict_emoji||'🎯'}</span><div class="v-title">${d.verdict_title||''}</div><p class="v-text">${d.verdict_text||''}</p></div>`;
-  setTimeout(()=>{ document.querySelectorAll('.sc-fill').forEach(el=>el.style.width=el.dataset.w+'%'); },300);
+    <div class="verdict">
+      <span class="v-emoji">${d.verdict_emoji||'🎯'}</span>
+      <div class="v-title">${d.verdict_title||''}</div>
+      <p class="v-text">${d.verdict_text||''}</p>
+    </div>`;
+
+  setTimeout(()=>{document.querySelectorAll('.sc-fill').forEach(el=>el.style.width=el.dataset.w+'%');},300);
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function share(){
-  const u=document.getElementById('unameInput').value.trim();
-  const txt=`حللت شخصية ${u?'@'+u:'حساب X'} بالذكاء الاصطناعي 🤖\n\nجرّب تحلل شخصيتك 👇\n#محلل_شخصية_X`;
+  const u=document.getElementById('unameInput').value.trim().replace('@','');
+  const txt=`حللت شخصية @${u} بالذكاء الاصطناعي 🤖\n\nجرّب تحلل أي حساب 👇\nx-personality.vercel.app\n\n#محلل_شخصية_X`;
   window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(txt),'_blank');
 }
 
 function reset(){
   document.getElementById('results').classList.remove('on');
   document.getElementById('resultsHTML').innerHTML='';
-  document.getElementById('stepsBar').style.display='flex';
-  document.getElementById('step0').style.display='block';
+  document.getElementById('inputSection').style.display='block';
   document.getElementById('unameInput').value='';
-  document.getElementById('q4').value='';
-  document.querySelectorAll('.pill').forEach(p=>p.classList.remove('sel'));
-  updateBar(0);
+  document.querySelectorAll('.lstep').forEach(x=>x.classList.remove('on'));
+  document.getElementById('ls0').classList.add('on');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
